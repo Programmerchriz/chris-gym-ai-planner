@@ -53,9 +53,9 @@ export default function AuthProvider({children}: { children: ReactNode }) {
           let planData;
           try {
               planData = await api.getCurrentPlan(currentUser.id);
-              setPlan(planData);
           } catch (err) {
               console.error("getCurrentPlan failed:", err);
+              planData = null; // Explicitly set to null on error
           }
           
           if (!cancelled) {

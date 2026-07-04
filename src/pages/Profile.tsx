@@ -35,16 +35,19 @@ export default function Profile() {
   if (!plan) {
     return (
       <div className="min-h-screen pt-24 pb-12 px-6">
-        <h1>No plan loaded yet</h1>
-        <pre>
-          user: {JSON.stringify(user, null, 2)}
-        </pre>
-        <pre>
-          plan: {JSON.stringify(plan, null, 2)}
-        </pre>
-        <pre>
-          isLoading: {String(isLoading)}
-        </pre>
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-2xl font-bold mb-4">No Training Plan Found</h1>
+          <p className="text-[var(--color-muted)] mb-6">
+            You don't have a training plan yet. Complete the onboarding process to generate your personalized workout plan.
+          </p>
+          <Button
+            onClick={() => window.location.href = '/onboarding'}
+            className="gap-2"
+          >
+            <Target className="w-4 h-4" />
+            Create Training Plan
+          </Button>
+        </div>
       </div>
     );
   }
