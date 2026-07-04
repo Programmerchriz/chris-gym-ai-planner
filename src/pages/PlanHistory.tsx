@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 import { RedirectToSignIn } from "@neondatabase/neon-js/auth/react";
 
 import { useAuth } from "../context/AuthContext";
@@ -60,11 +61,10 @@ export default function PlanHistory() {
         </p>
 
         {loading && (
-          <Card
-            variant="bordered"
-            className="text-center py-10"
-          >
-            <p>Loading plan history...</p>
+          <Card variant="bordered" className="text-center py-16">
+            <Loader2 className="w-12 h-12 text-[var(--color-accent)] mx-auto mb-6 animate-spin" />
+            <h1 className="text-2xl font-bold mb-2">Loading plan history..</h1>
+            <p className="text-[var(--color-muted)]">Please wait while we fetch your personalized training plan history.</p>
           </Card>
         )}
 
@@ -116,7 +116,7 @@ export default function PlanHistory() {
                     </div>
 
                     <button
-                      className="px-4 py-2 rounded-lg border hover:bg-gray-50 transition"
+                      className="px-4 py-2 rounded-lg border hover:bg-gray-50 hover:text-black hover:cursor-pointer transition"
                     >
                       View Plan
                     </button>

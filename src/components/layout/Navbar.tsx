@@ -23,7 +23,7 @@ export default function Navbar() {
                   My Plan
                 </Button>
               </Link>
-              <UserButton className="bg-[var(--color-accent)] text-[var(--color-background)] hover:bg-[var(--color-accent-hover)]" />
+              <UserButton size="sm" className="bg-[var(--color-accent)] text-[var(--color-background)] hover:bg-[var(--color-accent-hover)]" />
             </>
           ) : !isLoading ? (
             <>

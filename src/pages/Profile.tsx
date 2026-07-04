@@ -7,6 +7,7 @@ import {
   RefreshCcw,
   Target,
   TrendingUp,
+  Loader2,
 } from "lucide-react";
 import { Card } from "../components/ui/Card";
 import { PlanDisplay } from "../components/plan/PlanDisplay";
@@ -18,7 +19,11 @@ export default function Profile() {
     return (
       <div className="min-h-screen pt-24 pb-12 px-6">
         <div className="max-w-4xl mx-auto">
-          <p>Loading your training plan...</p>
+          <Card variant="bordered" className="text-center py-16">
+            <Loader2 className="w-12 h-12 text-[var(--color-accent)] mx-auto mb-6 animate-spin" />
+            <h1 className="text-2xl font-bold mb-2">Loading your training plan..</h1>
+            <p className="text-[var(--color-muted)]">Please wait while we fetch your personalized training plan.</p>
+          </Card>
         </div>
       </div>
     );
@@ -28,9 +33,9 @@ export default function Profile() {
     return <Navigate to="/auth/sign-in" replace />;
   }
 
-  if (!plan) {
-    return <Navigate to="/onboarding" replace />;
-  }
+  // if (!plan) {
+  //   return <Navigate to="/onboarding" replace />;
+  // }
 
   if (!plan) {
     return (
