@@ -28,9 +28,9 @@ export default function Profile() {
     return <Navigate to="/auth/sign-in" replace />;
   }
 
-  // if (!plan) {
-  //   return <Navigate to="/onboarding" replace />;
-  // }
+  if (!plan) {
+    return <Navigate to="/onboarding" replace />;
+  }
 
   if (!plan) {
     return (
