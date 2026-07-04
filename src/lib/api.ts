@@ -48,11 +48,11 @@ export const api = {
       userId,
       goal: profile.goal,
       experience: profile.experience,
-      daysPerWeek: profile.days_per_week,
-      sessionLength: profile.session_length,
+      days_per_week: profile.days_per_week,
+      session_length: profile.session_length,
       equipment: profile.equipment,
       injuries: profile.injuries,
-      preferredSplit: profile.preferred_split,
+      preferred_split: profile.preferred_split,
     });
   },
 
