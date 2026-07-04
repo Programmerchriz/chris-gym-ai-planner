@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { RedirectToSignIn } from "@neondatabase/neon-js/auth/react";
 
@@ -115,11 +116,16 @@ export default function PlanHistory() {
                       </p>
                     </div>
 
-                    <button
-                      className="px-4 py-2 rounded-lg border hover:bg-gray-50 hover:text-black hover:cursor-pointer transition"
+                    <Link
+                      to={`/plan/${plan.id}`}
+                      className="px-4 py-2 rounded-lg text-center border hover:bg-gray-50 hover:text-black hover:cursor-pointer transition"
                     >
-                      View Plan
-                    </button>
+                      <button
+                      >
+                        View Plan
+                      </button>
+                    </Link>
+                    
                   </div>
                 </Card>
               ))}

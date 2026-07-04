@@ -9,6 +9,7 @@ import { NeonAuthUIProvider } from '@neondatabase/neon-js/auth/react';
 import { authClient } from "./lib/auth";
 import AuthProvider from "./context/AuthContext";
 import PlanHistory from "./pages/PlanHistory";
+import PlanDetail from "./pages/plan/[id]";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/plan-history" element={<PlanHistory />} />
+                <Route path="/plan/:id" element={<PlanDetail />} />
                 <Route path="/auth/:pathname" element={<Auth />} />
                 <Route path="/account/:pathname" element={<Account />} />
               </Routes>
