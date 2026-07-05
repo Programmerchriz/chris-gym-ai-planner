@@ -117,7 +117,7 @@ export default function PlanHistory() {
                     </div>
 
                     <Link
-                      to={`/plan/${plan.id}`}
+                      to={`/plan/v${plan.version}`}
                       className="px-4 py-2 rounded-lg text-center border hover:bg-gray-50 hover:text-black hover:cursor-pointer transition"
                     >
                       <button

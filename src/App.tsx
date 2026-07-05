@@ -5,11 +5,11 @@ import Profile from "./pages/Profile";
 import Account from "./pages/Account";
 import Auth from "./pages/Auth";
 import Navbar from "./components/layout/Navbar";
-import { NeonAuthUIProvider } from '@neondatabase/neon-js/auth/react';
+import { NeonAuthUIProvider } from "@neondatabase/neon-js/auth/react";
 import { authClient } from "./lib/auth";
 import AuthProvider from "./context/AuthContext";
 import PlanHistory from "./pages/PlanHistory";
-import PlanDetail from "./pages/plan/[id]";
+import PlanDetail from "./pages/plan/[version]";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/plan-history" element={<PlanHistory />} />
-                <Route path="/plan/:id" element={<PlanDetail />} />
+                <Route path="/plan/:version" element={<PlanDetail />} />
                 <Route path="/auth/:pathname" element={<Auth />} />
                 <Route path="/account/:pathname" element={<Account />} />
               </Routes>

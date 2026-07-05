@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { Card } from "../../components/ui/Card";
 import { Button } from "../../components/ui/Button";
@@ -20,187 +20,44 @@ import {
 } from "lucide-react";
 import { TrainingPlan } from "../../types";
 
-// Mock data - replace with actual API call
-const mockPlan: TrainingPlan = {
-  id: "776fb0d1-0418-4604-a29f-917d1f4a7caa",
-  userId: "53c82b54-326b-4366-863b-f36cecd262be",
-  overview: {
-    goal: "Build muscle mass and increase overall size through hypertrophy-focused resistance training.",
-    notes:
-      "Each session is designed to fit within 45 minutes using minimal equipment (dumbbells, bench, and bodyweight). Focus on mastering form and progressive overload. Rest 2-3 minutes between sets for compound lifts, shorter for isolation.",
-    split: "Full-body (rotating emphasis each session)",
-    frequency: "3 days per week",
-  },
-  weeklySchedule: [
-    {
-      day: "Monday",
-      focus: "Lower body strength and hypertrophy",
-      exercises: [
-        {
-          rpe: 8,
-          name: "Goblet Squat",
-          reps: "8-10",
-          rest: "2-3 min",
-          sets: 4,
-          notes: "Keep chest up, elbows inside knees",
-          alternatives: ["Dumbbell Squat", "Bodyweight Squat"],
-        },
-        {
-          rpe: 7,
-          name: "Romanian Deadlift (dumbbell)",
-          reps: "10-12",
-          rest: "2 min",
-          sets: 3,
-          notes: "Hinge at hips, slight knee bend",
-          alternatives: ["Single-leg RDL", "Kettlebell Swing"],
-        },
-        {
-          rpe: 7,
-          name: "Walking Lunges",
-          reps: "12 each leg",
-          rest: "90 sec",
-          sets: 3,
-          notes: "Step forward, knee over toe",
-          alternatives: ["Static Lunges", "Reverse Lunges"],
-        },
-        {
-          rpe: 6,
-          name: "Standing Calf Raise",
-          reps: "15-20",
-          rest: "60 sec",
-          sets: 4,
-          notes: "Full range, pause at top",
-          alternatives: ["Seated Calf Raise (if bench)", "Jump Rope"],
-        },
-        {
-          rpe: 6,
-          name: "Plank",
-          reps: "30-45 sec",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Maintain neutral spine",
-          alternatives: ["Side Plank", "Dead Bug"],
-        },
-      ],
-    },
-    {
-      day: "Wednesday",
-      focus: "Upper body push",
-      exercises: [
-        {
-          rpe: 8,
-          name: "Dumbbell Bench Press",
-          reps: "8-10",
-          rest: "2-3 min",
-          sets: 4,
-          notes: "Feet flat, scapula retracted",
-          alternatives: ["Floor Press", "Push-ups"],
-        },
-        {
-          rpe: 7,
-          name: "Overhead Dumbbell Press",
-          reps: "8-12",
-          rest: "2 min",
-          sets: 3,
-          notes: "Core tight, avoid excessive arch",
-          alternatives: ["Arnold Press", "Seated Dumbbell Press"],
-        },
-        {
-          rpe: 7,
-          name: "Push-ups",
-          reps: "AMRAP up to 20",
-          rest: "90 sec",
-          sets: 3,
-          notes: "Keep body straight",
-          alternatives: ["Incline Push-ups", "Decline Push-ups"],
-        },
-        {
-          rpe: 6,
-          name: "Dumbbell Fly",
-          reps: "12-15",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Slight bend in elbows, stretch chest",
-          alternatives: ["Cable Fly (if bands)", "Pec Deck"],
-        },
-        {
-          rpe: 6,
-          name: "Triceps Overhead Extension",
-          reps: "12-15",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Elbows close to head",
-          alternatives: ["Triceps Kickback", "Close-grip Push-ups"],
-        },
-      ],
-    },
-    {
-      day: "Friday",
-      focus: "Upper body pull and core",
-      exercises: [
-        {
-          rpe: 8,
-          name: "Bent-over Dumbbell Row",
-          reps: "8-10",
-          rest: "2-3 min",
-          sets: 4,
-          notes: "Hinge at hips, pull to ribcage",
-          alternatives: ["Inverted Row (under table)", "Seated Row with bands"],
-        },
-        {
-          rpe: 8,
-          name: "Pull-ups (or assisted)",
-          reps: "6-10",
-          rest: "2-3 min",
-          sets: 3,
-          notes: "Full range, avoid swinging",
-          alternatives: ["Band-assisted Pull-ups", "Negative Pull-ups"],
-        },
-        {
-          rpe: 6,
-          name: "Face Pull (with resistance band)",
-          reps: "15-20",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Pull to forehead, elbows high",
-          alternatives: ["Band Pull-apart", "Rear Delt Fly"],
-        },
-        {
-          rpe: 6,
-          name: "Dumbbell Biceps Curl",
-          reps: "10-12",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Control eccentric, avoid swinging",
-          alternatives: ["Hammer Curl", "Cable Curl"],
-        },
-        {
-          rpe: 6,
-          name: "Hanging Leg Raise (or knee raise)",
-          reps: "10-15",
-          rest: "60 sec",
-          sets: 3,
-          notes: "Control movement, avoid momentum",
-          alternatives: ["Reverse Crunch", "Plank Knee-to-Elbow"],
-        },
-      ],
-    },
-  ],
-  progression:
-    "Increase weight by 2.5-5lbs when you can complete all sets with good form. Track your progress weekly.",
-  version: 5,
-  createdAt: "2026-07-04T10:39:50.769Z",
-};
-
 export default function PlanDetail() {
-  const { id } = useParams<{ id: string }>();
-  // const { plan } = useAuth();
-  const plan = mockPlan; // Replace with actual data fetching
+  const { version } = useParams<{ version: string }>();
+  const navigate = useNavigate();
+  const { getPlan } = useAuth();
+
+  const [plan, setPlan] = useState<TrainingPlan | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [expandedDay, setExpandedDay] = useState<number | null>(0);
   const [completedExercises, setCompletedExercises] = useState<Set<string>>(
     new Set(),
   );
   const [showNotes, setShowNotes] = useState(true);
+
+  useEffect(() => {
+    async function fetchPlan() {
+      if (!version) {
+        navigate("/auth/sign-in");
+        return;
+      }
+
+      try {
+        setIsLoading(true);
+        setError(null);
+        // Handle both "v5" and "5" formats
+        const versionNumber = parseInt(version.replace("v", ""));
+        const planData = await getPlan("", versionNumber);
+        setPlan(planData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load plan");
+        console.error("Failed to fetch plan:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchPlan();
+  }, [version, getPlan, navigate]);
 
   function formatDate(dateString: string) {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -233,7 +90,38 @@ export default function PlanDetail() {
     setCompletedExercises(newCompleted);
   }
 
-  const totalExercises = plan.weeklySchedule.reduce(
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-24 pb-12 px-6 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-white/60">Loading your training plan...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !plan) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-24 pb-12 px-6 flex items-center justify-center">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span className="text-3xl">⚠️</span>
+          </div>
+          <h2 className="text-xl font-semibold text-white mb-2">
+            Failed to load plan
+          </h2>
+          <p className="text-white/60 mb-6">{error || "Plan not found"}</p>
+          <Button onClick={() => navigate("/profile")} className="gap-2">
+            <ArrowLeft className="w-4 h-4" />
+            Back to Profile
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const totalExercises = plan!.weeklySchedule.reduce(
     (acc, day) => acc + day.exercises.length,
     0,
   );

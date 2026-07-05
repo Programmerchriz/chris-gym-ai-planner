@@ -20,24 +20,7 @@ async function post(path: string, body: object) {
 
 async function get(path: string) {
   const res = await fetch(`${BASE_URL}/api/${path}`);
-
-  console.log(
-    "URL:",
-    `${BASE_URL}/api/${path}`
-  );
-
-  console.log(
-    "status:",
-    res.status
-  );
-
-  console.log(
-    "content-type:",
-    res.headers.get("content-type")
-  );
-
   const text = await res.text();
-  console.log(text);
 
   return JSON.parse(text);
 }
@@ -68,7 +51,7 @@ export const api = {
     return (get(`plan/history?userId=${userId}`));
   },
 
-  getPlan: (userId: string, id: string) => {
-    return (get(`plan/${id}?userId=${userId}`));
+  getPlan: (userId: string, id: string, version: number) => {
+    return (get(`plan/v${version}?userId=${userId}`));
   }
 };
