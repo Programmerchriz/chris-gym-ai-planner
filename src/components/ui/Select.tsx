@@ -1,4 +1,4 @@
-import { type SelectHTMLAttributes, forwardRef } from 'react';
+import { type SelectHTMLAttributes, forwardRef } from "react";
 
 interface SelectOption {
   value: string;
@@ -12,18 +12,21 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className = '', label, error, id, options, ...props }, ref) => {
+  ({ className = "", label, error, id, options, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={id} className="text-sm font-medium text-[var(--color-foreground)]">
+          <label
+            htmlFor={id}
+            className="text-sm font-medium text-[var(--color-text-primary)]"
+          >
             {label}
           </label>
         )}
         <select
           ref={ref}
           id={id}
-          className={`w-full px-4 py-2.5 bg-[var(--color-card)] border border-[var(--color-border)] rounded-xl text-[var(--color-foreground)] focus:outline-none focus:border-[var(--color-accent)] transition-colors cursor-pointer ${className}`}
+          className={`w-full px-4 py-2.5 bg-[var(--bg-white-5)] border border-[var(--border-white-20)] rounded-xl text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--border-purple-50)] focus:bg-[var(--bg-white-10)] transition-all duration-300 cursor-pointer ${error ? "border-red-500 focus:border-red-500" : ""} ${className}`}
           {...props}
         >
           {options.map((option) => (
@@ -35,7 +38,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {error && <span className="text-sm text-red-500">{error}</span>}
       </div>
     );
-  }
+  },
 );
 
-Select.displayName = 'Select';
+Select.displayName = "Select";
