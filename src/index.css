@@ -43,6 +43,50 @@
   --radius: 1rem;
 }
 
+/* Dropdown Menu */
+
+[data-slot="dropdown-menu-content"]{
+    background:rgba(24,24,27,.92) !important;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08) !important;
+
+    border-radius:18px !important;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45) !important;
+
+    padding:.5rem !important;
+}
+
+[data-slot="dropdown-menu-item"]{
+
+    border-radius:12px !important;
+
+    transition:.2s;
+
+}
+
+[data-slot="dropdown-menu-item"]:hover{
+
+    background:rgba(168,85,247,.15) !important;
+
+}
+
+[data-slot="dropdown-menu-separator"]{
+
+    background:rgba(255,255,255,.08) !important;
+
+}
+
+[data-slot="dropdown-menu-label"]{
+
+    color:rgba(255,255,255,.55);
+
+}
+
 .neon-auth-ui input,
 .neon-auth-ui textarea,
 .neon-auth-ui select {
@@ -63,6 +107,7 @@
   border-radius: 14px;
   transition: .25s ease;
 }
+
 
 @theme {
   --font-sans: "Geist", system-ui, sans-serif;
