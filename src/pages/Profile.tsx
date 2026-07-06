@@ -17,12 +17,23 @@ export default function Profile() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-24 pb-12 px-6">
-        <div className="max-w-4xl mx-auto">
-          <Card variant="bordered" className="text-center py-16">
-            <Loader2 className="w-12 h-12 text-[var(--color-accent)] mx-auto mb-6 animate-spin" />
-            <h1 className="text-2xl font-bold mb-2">Loading your training plan..</h1>
-            <p className="text-[var(--color-muted)]">Please wait while we fetch your personalized training plan.</p>
+      <div className="min-h-screen dark-gradient-bg pt-24 pb-12 px-6 flex items-center justify-center fade-in">
+        <div className="max-w-lg w-full">
+          <Card
+            variant="glass"
+            className="text-center py-20 border border-[var(--border-white-10)]"
+          >
+            <div className="gradient-icon w-20 h-20 rounded-full mx-auto mb-8 pulse-animation">
+              <Loader2 className="w-10 h-10 text-white animate-spin" />
+            </div>
+
+            <h1 className="text-4xl font-bold gradient-text mb-4">
+              Loading Your Plan
+            </h1>
+
+            <p className="text-[var(--color-text-secondary)]">
+              Fetching your personalized AI workout plan...
+            </p>
           </Card>
         </div>
       </div>
@@ -39,19 +50,35 @@ export default function Profile() {
 
   if (!plan) {
     return (
-      <div className="min-h-screen pt-24 pb-12 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-2xl font-bold mb-4">No Training Plan Found</h1>
-          <p className="text-[var(--color-muted)] mb-6">
-            You don't have a training plan yet. Complete the onboarding process to generate your personalized workout plan.
-          </p>
-          <Button
-            onClick={() => window.location.href = '/onboarding'}
-            className="gap-2"
+      <div className="min-h-screen dark-gradient-bg pt-24 pb-12 px-6 fade-in">
+        <div className="max-w-3xl mx-auto">
+          <Card
+            variant="glass"
+            className="text-center py-20 border border-[var(--border-white-10)]"
           >
-            <Target className="w-4 h-4" />
-            Create Training Plan
-          </Button>
+            <div className="gradient-icon w-20 h-20 rounded-full mx-auto mb-8">
+              <Target className="w-10 h-10 text-white" />
+            </div>
+
+            <h1 className="text-4xl font-bold gradient-text mb-4">
+              No Training Plan Yet
+            </h1>
+
+            <p className="max-w-xl mx-auto text-[var(--color-text-secondary)] leading-7 mb-8">
+              Complete the onboarding questionnaire and let GymAI generate a
+              personalized training program tailored specifically to your goals.
+            </p>
+
+            <Button
+              variant="gradient"
+              size="lg"
+              onClick={() => (window.location.href = "/onboarding")}
+              className="gap-2"
+            >
+              <Target className="w-5 h-5" />
+              Create My Plan
+            </Button>
+          </Card>
         </div>
       </div>
     );
@@ -68,82 +95,122 @@ export default function Profile() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-12 px-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div>
-            <h1 className="text-3xl font-bold mb-1">Your Training Plan</h1>
-            <p className="text-[var(--color-muted)]">Version: {plan.version} . Created At {formatDate(plan.createdAt)}</p>
+    <div className="min-h-screen dark-gradient-bg pt-24 pb-12 px-6 fade-in">
+      <div className="relative max-w-6xl mx-auto">
+        <div className="blur-glow opacity-20 pointer-events-none" />
+
+        <div className="relative">
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-2 text-sm text-[var(--color-text-secondary)] mb-5">
+                <TrendingUp className="w-4 h-4 text-purple-400" />
+                Version {plan.version}
+              </span>
+
+              <h1 className="text-5xl font-bold gradient-text mb-3">
+                Your Training Plan
+              </h1>
+
+              <p className="text-[var(--color-text-secondary)]">
+                Created {formatDate(plan.createdAt)}
+              </p>
+            </div>
+
+            <Button
+              variant="gradient-outline"
+              size="lg"
+              className="gap-2"
+              onClick={async () => await generatePlan()}
+            >
+              <RefreshCcw className="w-5 h-5" />
+              Regenerate Plan
+            </Button>
           </div>
 
-          <Button
-            variant="secondary"
-            className="gap-2"
-            onClick={async () => await generatePlan()}
-          >
-            <RefreshCcw className="w-4 h-4" />
-            Regenerate Plan
-          </Button>
+          {/* Overview */}
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4 mb-10">
+            {[
+              {
+                icon: Target,
+                title: "Goal",
+                value: plan.overview.goal,
+                iconClass: "gradient-icon-blue-cyan",
+              },
+              {
+                icon: Calendar,
+                title: "Frequency",
+                value: plan.overview.frequency,
+                iconClass: "gradient-icon-purple-pink",
+              },
+              {
+                icon: Dumbbell,
+                title: "Split",
+                value: plan.overview.split,
+                iconClass: "gradient-icon-orange-red",
+              },
+              {
+                icon: TrendingUp,
+                title: "Version",
+                value: plan.version,
+                iconClass: "gradient-icon-green-emerald",
+              },
+            ].map((item) => (
+              <Card
+                key={item.title}
+                variant="glass"
+                className="flex items-center gap-4"
+              >
+                <div
+                  className={`${item.iconClass} w-14 h-14 rounded-2xl flex items-center justify-center`}
+                >
+                  <item.icon className="w-6 h-6 text-white" />
+                </div>
 
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)]">
+                    {item.title}
+                  </p>
+
+                  <p className="font-semibold text-[var(--color-text-primary)]">
+                    {item.value}
+                  </p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Notes */}
+          <Card variant="glass" className="mb-10">
+            <h2 className="text-2xl font-semibold mb-4 gradient-text-purple-pink">
+              Program Notes
+            </h2>
+
+            <p className="leading-8 text-[var(--color-text-secondary)]">
+              {plan.overview.notes}
+            </p>
+          </Card>
+
+          {/* Weekly Schedule */}
+          <div className="mb-10">
+            <h2 className="text-3xl font-bold mb-6 gradient-text">
+              Weekly Schedule
+            </h2>
+
+            <PlanDisplay weeklySchedule={plan.weeklySchedule} />
+          </div>
+
+          {/* Progression */}
+          <Card variant="glass">
+            <h2 className="text-2xl font-semibold mb-4 gradient-text-purple-pink">
+              Progression Strategy
+            </h2>
+
+            <p className="leading-8 text-[var(--color-text-secondary)]">
+              {plan.progression}
+            </p>
+          </Card>
         </div>
-
-        <div className="grid md:grid-cols-4 gap-4 mb-8">
-          <Card variant="bordered" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <Target className="w-5 h-5 text-[var(--color-accent)]" />
-            </div>
-            <div>
-              <p className="text-xs text-[var(--color-muted)]">Goal</p>
-              <p className="font-medium text-sm">{plan.overview.goal}</p>
-            </div>
-          </Card>
-          <Card variant="bordered" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <Calendar className="w-5 h-5 text-[var(--color-accent)]" />
-            </div>
-            <div>
-              <p className="text-xs text-[var(--color-muted)]">Frequency</p>
-              <p className="font-medium text-sm">{plan.overview.frequency}</p>
-            </div>
-          </Card>
-          <Card variant="bordered" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <Dumbbell className="w-5 h-5 text-[var(--color-accent)]" />
-            </div>
-            <div>
-              <p className="text-xs text-[var(--color-muted)]">Split</p>
-              <p className="font-medium text-sm">{plan.overview.split}</p>
-            </div>
-          </Card>
-          <Card variant="bordered" className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <TrendingUp className="w-5 h-5 text-[var(--color-accent)]" />
-            </div>
-            <div>
-              <p className="text-xs text-[var(--color-muted)]">Version</p>
-              <p className="font-medium text-sm">{plan.version}</p>
-            </div>
-          </Card>
-        </div>
-
-        {/* Plan notes */}
-        <Card variant="bordered" className="mb-8">
-          <h2 className="font-semibold text-lg mb-2">Program Notes</h2>
-          <p className="text-[var(--color-muted)] text-sm leading-relaxed">
-            {plan.overview.notes}
-          </p>
-        </Card>
-
-        {/* Weekly Schedule */}
-        <h2 className="font-semibold text-xl mb-4">Weekly Schedule</h2>
-        <PlanDisplay weeklySchedule={plan.weeklySchedule} />
-
-        <Card variant="bordered" className="mb-8">
-          <h2 className="font-semibold text-lg mb-2">Progression Strategy</h2>
-          <p className="text-[var(--color-muted)] text-sm leading-relaxed">
-            {plan.progression}
-          </p>
-        </Card>
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, History, ArrowRight } from "lucide-react";
 import { RedirectToSignIn } from "@neondatabase/neon-js/auth/react";
 
 import { useAuth } from "../context/AuthContext";
 import { api } from "../lib/api";
 import { Card } from "../components/ui/Card";
+import { Button } from "../components/ui/Button";
 
 interface PlanHistoryItem {
   id: string;
@@ -51,86 +52,112 @@ export default function PlanHistory() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-12 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-2">
-          Plan History
-        </h1>
+    <div className="min-h-screen dark-gradient-bg pt-24 pb-12 px-6 fade-in">
+      <div className="relative max-w-5xl mx-auto">
+        <div className="blur-glow opacity-20 pointer-events-none" />
 
-        <p className="text-[var(--color-muted)] mb-8">
-          View all previously generated training plans.
-        </p>
+        <div className="relative">
+          {/* Header */}
+          <div className="mb-10">
+            <span className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-2 text-sm text-[var(--color-text-secondary)] mb-5">
+              <History className="w-4 h-4 text-purple-400" />
+              Previous Plans
+            </span>
 
-        {loading && (
-          <Card variant="bordered" className="text-center py-16">
-            <Loader2 className="w-12 h-12 text-[var(--color-accent)] mx-auto mb-6 animate-spin" />
-            <h1 className="text-2xl font-bold mb-2">Loading plan history..</h1>
-            <p className="text-[var(--color-muted)]">Please wait while we fetch your personalized training plan history.</p>
-          </Card>
-        )}
+            <h1 className="text-5xl font-bold gradient-text mb-3">
+              Plan History
+            </h1>
 
-        {!loading && error && (
-          <Card
-            variant="bordered"
-            className="text-center py-10"
-          >
-            <p className="text-red-500">
-              {error}
+            <p className="text-lg text-[var(--color-text-secondary)]">
+              Browse every AI-generated training plan you've created.
             </p>
-          </Card>
-        )}
+          </div>
 
-        {!loading &&
-          !error &&
-          plans.length === 0 && (
+          {loading && (
             <Card
-              variant="bordered"
-              className="text-center py-10"
+              variant="glass"
+              className="text-center py-20 border border-[var(--border-white-10)]"
             >
-              <p className="text-[var(--color-muted)]">
-                No plans generated yet.
+              <div className="gradient-icon w-20 h-20 rounded-full mx-auto mb-8 pulse-animation">
+                <Loader2 className="w-10 h-10 text-white animate-spin" />
+              </div>
+
+              <h2 className="text-3xl font-bold gradient-text mb-3">
+                Loading Plans
+              </h2>
+
+              <p className="text-[var(--color-text-secondary)]">
+                Fetching your personalized training history...
               </p>
             </Card>
           )}
 
-        {!loading &&
-          !error &&
-          plans.length > 0 && (
-            <div className="space-y-4">
+          {!loading && error && (
+            <Card
+              variant="glass"
+              className="text-center py-14 border border-red-500/20"
+            >
+              <p className="text-red-400">{error}</p>
+            </Card>
+          )}
+
+          {!loading && !error && plans.length === 0 && (
+            <Card
+              variant="glass"
+              className="text-center py-20 border border-[var(--border-white-10)]"
+            >
+              <div className="gradient-icon w-16 h-16 rounded-2xl mx-auto mb-6">
+                <History className="w-8 h-8 text-white" />
+              </div>
+
+              <h2 className="text-2xl font-semibold mb-3">
+                No Plans Yet
+              </h2>
+
+              <p className="text-[var(--color-text-secondary)]">
+                Generate your first AI workout plan to see it here.
+              </p>
+            </Card>
+          )}
+
+          {!loading && !error && plans.length > 0 && (
+            <div className="space-y-5">
               {plans.map((plan) => (
                 <Card
                   key={plan.id}
-                  variant="bordered"
+                  variant="glass"
+                  className="border border-[var(--border-white-10)] hover:border-[var(--border-purple-30)] transition-all duration-300"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <h2 className="text-xl font-semibold">
-                        Version {plan.version}
-                      </h2>
+                  <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex items-center gap-5">
+                      <div className="gradient-icon w-14 h-14 rounded-2xl">
+                        <History className="w-7 h-7 text-white" />
+                      </div>
 
-                      <p className="text-sm text-[var(--color-muted)] mt-1">
-                        Generated on{" "}
-                        {new Date(
-                          plan.createdAt
-                        ).toLocaleDateString()}
-                      </p>
+                      <div>
+                        <h2 className="text-2xl font-semibold text-[var(--color-text-primary)]">
+                          Version {plan.version}
+                        </h2>
+
+                        <p className="mt-1 text-[var(--color-text-secondary)]">
+                          Generated{" "}
+                          {new Date(plan.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
                     </div>
 
-                    <Link
-                      to={`/plan/v${plan.version}`}
-                      className="px-4 py-2 rounded-lg text-center border hover:bg-gray-50 hover:text-black hover:cursor-pointer transition"
-                    >
-                      <button
-                      >
+                    <Link to={`/plan/v${plan.version}`}>
+                      <Button variant="gradient" className="gap-2">
                         View Plan
-                      </button>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
                     </Link>
-                    
                   </div>
                 </Card>
               ))}
             </div>
           )}
+        </div>
       </div>
     </div>
   );

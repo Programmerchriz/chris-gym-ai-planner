@@ -1,6 +1,69 @@
 @import "tailwindcss";
 @import "@neondatabase/neon-js/ui/tailwind";
 
+/* Neon Theme Bridge */
+
+:root,
+:root.dark,
+.neon-auth-ui {
+  /* Base */
+  --background: var(--color-dark-bg);
+  --foreground: var(--color-text-primary);
+
+  /* Cards */
+  --card: var(--color-card);
+  --card-foreground: var(--color-text-primary);
+
+  /* Popovers */
+  --popover: var(--color-card);
+  --popover-foreground: var(--color-text-primary);
+
+  /* Primary */
+  --primary: #a855f7;
+  --primary-foreground: white;
+
+  /* Secondary */
+  --secondary: var(--bg-white-5);
+  --secondary-foreground: var(--color-text-primary);
+
+  /* Accent */
+  --accent: var(--bg-purple-10);
+  --accent-foreground: var(--color-text-primary);
+
+  /* Muted */
+  --muted: var(--bg-white-5);
+  --muted-foreground: var(--color-text-secondary);
+
+  /* Inputs */
+  --border: var(--border-white-20);
+  --input: var(--bg-white-5);
+  --ring: rgba(168,85,247,.5);
+
+  /* Radius */
+  --radius: 1rem;
+}
+
+.neon-auth-ui input,
+.neon-auth-ui textarea,
+.neon-auth-ui select {
+  background: var(--bg-white-5);
+  border: 1px solid var(--border-white-20);
+  color: var(--color-text-primary);
+  border-radius: 12px;
+}
+
+.neon-auth-ui input:focus,
+.neon-auth-ui textarea:focus,
+.neon-auth-ui select:focus {
+  border-color: var(--border-purple-50);
+  box-shadow: 0 0 0 3px rgba(168,85,247,.18);
+}
+
+.neon-auth-ui button {
+  border-radius: 14px;
+  transition: .25s ease;
+}
+
 @theme {
   --font-sans: "Geist", system-ui, sans-serif;
 
@@ -275,20 +338,51 @@
   }
 
   /* Scrollbar Styling */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(168, 85, 247, 0.45) transparent;
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--color-dark-bg);
+    background: transparent;
+    margin: 6px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--border-white-20);
-    border-radius: 4px;
+    background: linear-gradient(
+      180deg,
+      rgba(168, 85, 247, 0.55) 0%,
+      rgba(236, 72, 153, 0.55) 100%
+    );
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: all 0.3s ease;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--border-white-30);
+    background: linear-gradient(
+      180deg,
+      rgba(168, 85, 247, 0.85) 0%,
+      rgba(236, 72, 153, 0.85) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(
+      180deg,
+      #a855f7 0%,
+      #ec4899 100%
+    );
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-corner {
+    background: transparent;
   }
 }

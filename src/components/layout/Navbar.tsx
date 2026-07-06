@@ -36,7 +36,7 @@ export default function Navbar() {
               </Link>
               <UserButton
                 size="sm"
-                className="bg-[var(--gradient-accent-primary)] text-white hover:opacity-90"
+                className="bg-[var(--gradient-accent-primary)] text-white hover:bg-(--bg-white-20)"
               />
             </>
           ) : !isLoading ? (

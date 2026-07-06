@@ -5,9 +5,14 @@ export default function Auth() {
   const { pathname } = useParams();
 
   return (
-    <div className='min-h-screen pt-24 pb-12 px-6 flex items-center justify-center'>
-      <div className="max-w-md w-full">
-        <AuthView pathname={pathname} />
+    <div className="min-h-screen dark-gradient-bg pt-24 pb-12 px-6 flex items-center justify-center fade-in">
+      <div className="relative w-full max-w-md">
+        {/* Ambient Glow */}
+        <div className="blur-glow opacity-20 pointer-events-none" />
+
+        <div className="relative">
+          <AuthView pathname={pathname} />
+        </div>
       </div>
     </div>
   );
