@@ -16,22 +16,6 @@ function App() {
     <NeonAuthUIProvider
       authClient={authClient}
       defaultTheme="dark"
-      theme={{
-        colors: {
-            background: "var(--color-dark-bg)",
-            card: "var(--color-card)",
-
-            primary: "#a855f7",
-
-            border: "var(--border-white-20)",
-
-            input: "var(--bg-white-5)",
-
-            foreground: "var(--color-text-primary)",
-
-            muted: "var(--color-text-secondary)",
-        }
-    }}
     >
       <AuthProvider>
         <BrowserRouter>
