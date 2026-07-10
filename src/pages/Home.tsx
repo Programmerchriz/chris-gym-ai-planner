@@ -14,6 +14,14 @@ import Hero from "../components/layout/landing/Hero";
 import SocialProof from "../components/layout/landing/SocialProof";
 import Features from "../components/layout/landing/Features";
 import DashboardPreview from "../components/layout/landing/DashboardPreview";
+import HowItWorks from "../components/layout/landing/HowItWorks";
+import AICapabilities from "../components/layout/landing/AICapabilities";
+import Benefits from "../components/layout/landing/Benefits";
+import Testimonials from "../components/layout/landing/Testimonials";
+import Pricing from "../components/layout/landing/Pricing";
+import FAQ from "../components/layout/landing/FAQ";
+import FinalCTA from "../components/layout/landing/FinalCTA";
+import Footer from "../components/layout/landing/Footer";
 
 const features = [
   {
@@ -296,6 +304,14 @@ export default function Home() {
       {/* <SocialProof /> */}
       <Features />
       <DashboardPreview />
+      <HowItWorks />
+      {/* <AICapabilities /> */}
+      <Benefits />
+      {/* <Testimonials /> */}
+      <Pricing />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
     </>
   );
 }
