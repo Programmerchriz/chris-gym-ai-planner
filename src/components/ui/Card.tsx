@@ -1,30 +1,128 @@
-import { type HTMLAttributes, forwardRef } from "react";
+import { forwardRef, type ReactNode } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { motion, type HTMLMotionProps } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "bordered" | "glass" | "gradient";
+const cardVariants = cva(
+  [
+    "relative overflow-hidden rounded-3xl",
+    "border",
+    "backdrop-blur-xl",
+    "transition-all duration-300",
+  ],
+  {
+    variants: {
+      variant: {
+        default: [
+          "bg-card",
+          "border-border",
+        ],
+
+        bordered: [
+          "bg-card",
+          "border-border",
+          "hover:border-primary/40",
+        ],
+
+        glass: [
+          "bg-background/60",
+          "border-white/10",
+          "backdrop-blur-2xl",
+          "supports-[backdrop-filter]:bg-background/40",
+        ],
+
+        elevated: [
+          "bg-card",
+          "border-border",
+          "shadow-xl",
+          "shadow-black/5",
+        ],
+
+        gradient: [
+          "border-primary/20",
+          "bg-gradient-to-br",
+          "from-card",
+          "via-card",
+          "to-primary/10",
+        ],
+      },
+
+      padding: {
+        none: "p-0",
+        sm: "p-4",
+        md: "p-6",
+        lg: "p-8",
+      },
+
+      hover: {
+        true: "hover:-translate-y-1 hover:shadow-2xl",
+        false: "",
+      },
+    },
+
+    defaultVariants: {
+      variant: "default",
+      padding: "md",
+      hover: false,
+    },
+  }
+);
+
+interface CardProps
+  extends Omit<
+      HTMLMotionProps<"div">,
+      "children" | "className"
+    >,
+    VariantProps<typeof cardVariants> {
+  children?: ReactNode;
+
+  className?: string;
+
+  animate?: boolean;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className = "", variant = "default", children, ...props }, ref) => {
-    const variants = {
-      default: "bg-[var(--color-card)]",
-      bordered:
-        "bg-[var(--color-card)] border border-[var(--color-border)] hover:border-[var(--border-white-30)] transition-colors",
-      glass: "glass-card hover:bg-[var(--bg-white-10)] transition-colors",
-      gradient:
-        "bg-[var(--gradient-dark-bg)] border border-[var(--border-purple-30)]",
-    };
-
+  (
+    {
+      children,
+      className,
+      variant,
+      padding,
+      hover,
+      animate = false,
+      ...props
+    },
+    ref
+  ) => {
     return (
-      <div
+      <motion.div
         ref={ref}
-        className={`rounded-2xl p-6 transition-all duration-300 ${variants[variant]} ${className}`}
+        whileHover={
+          animate
+            ? {
+                y: -6,
+                scale: 1.01,
+              }
+            : undefined
+        }
+        transition={{
+          duration: 0.25,
+          ease: "easeOut",
+        }}
+        className={cn(
+          cardVariants({
+            variant,
+            padding,
+            hover,
+          }),
+          className
+        )}
         {...props}
       >
         {children}
-      </div>
+      </motion.div>
     );
-  },
+  }
 );
 
 Card.displayName = "Card";

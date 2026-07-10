@@ -1,47 +1,61 @@
-import { type ButtonHTMLAttributes, forwardRef } from "react";
+import { forwardRef } from "react";
+import type { ButtonHTMLAttributes } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "gradient" | "gradient-outline";
-  size?: "sm" | "md" | "lg";
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-2xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]",
+  {
+    variants: {
+      variant: {
+        primary:
+          "bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 text-white shadow-lg shadow-orange-500/30 hover:brightness-110",
+        secondary:
+          "bg-card border border-border hover:bg-muted",
+        ghost:
+          "hover:bg-muted text-muted-foreground hover:text-foreground",
+        outline:
+          "border border-orange-400/30 hover:bg-orange-500/10",
+        gradient:
+          "bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 text-white border border-orange-300/20 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:brightness-110 active:scale-[0.98]",
+
+        "gradient-outline":
+          "border border-orange-400/30 bg-orange-500/5 text-orange-300 hover:bg-orange-500/10 hover:border-orange-400/50",
+      },
+
+      size: {
+        sm: "h-10 px-4 text-sm",
+        md: "h-11 px-6 text-sm",
+        lg: "h-13 px-8 text-base",
+      },
+    },
+
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+    },
+  }
+);
+
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  loading?: boolean;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { className = "", variant = "primary", size = "md", children, ...props },
-    ref,
-  ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer hover-scale";
-
-    const variants = {
-      primary:
-        "bg-[var(--color-accent)] text-black hover:bg-[var(--color-accent-hover)] shadow-lg hover:shadow-xl",
-      secondary:
-        "bg-[var(--color-card)] text-[var(--color-foreground)] border border-[var(--color-border)] hover:bg-[var(--color-border)] hover:border-[var(--border-white-30)]",
-      ghost:
-        "text-[var(--color-muted)] hover:text-[var(--color-foreground)] hover:bg-[var(--color-glass-hover)]",
-      gradient:
-        "bg-[var(--gradient-accent-primary)] text-white shadow-lg hover:shadow-xl hover:opacity-90",
-      "gradient-outline":
-        "bg-transparent text-white border border-[var(--border-purple-50)] hover:bg-[var(--bg-purple-10)]",
-    };
-
-    const sizes = {
-      sm: "px-3 py-1.5 text-sm",
-      md: "px-5 py-2.5 text-base",
-      lg: "px-8 py-3 text-lg",
-    };
-
+  ({ className, variant, size, loading, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+        className={cn(buttonVariants({ variant, size }), className)}
+        disabled={loading || props.disabled}
         {...props}
       >
-        {children}
+        {loading ? "Loading..." : children}
       </button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";

@@ -4,7 +4,7 @@ import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import Account from "./pages/Account";
 import Auth from "./pages/Auth";
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/layout/landing/Navbar";
 import { NeonAuthUIProvider } from "@neondatabase/neon-js/auth/react";
 import { authClient } from "./lib/auth";
 import AuthProvider from "./context/AuthContext";
@@ -15,7 +15,8 @@ function App() {
   return (
     <NeonAuthUIProvider
       authClient={authClient}
-      defaultTheme="dark"
+      // defaultTheme="light"
+      className="root"
     >
       <AuthProvider>
         <BrowserRouter>
