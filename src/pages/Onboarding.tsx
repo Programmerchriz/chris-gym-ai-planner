@@ -62,14 +62,14 @@ export default function Onboarding() {
     injuries: "",
     preferredSplit: "upper_lower",
   });
-  
+
   const [error, setError] = useState("");
-  const [ isGenerating, setIsGenerating ] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const navigate = useNavigate();
-  
+
   function updateForm(field: string, value: string) {
     setFormData((prev) => ({ ...prev, [field]: value }));
-  };
+  }
 
   async function handleQuestionnaire(e: React.SubmitEvent) {
     e.preventDefault();
@@ -83,7 +83,8 @@ export default function Onboarding() {
       session_length: parseInt(formData.sessionLength),
       equipment: formData.equipment as UserProfile["equipment"],
       injuries: formData.injuries || undefined,
-      preferred_split: formData.preferredSplit as UserProfile["preferred_split"],
+      preferred_split:
+        formData.preferredSplit as UserProfile["preferred_split"],
     };
 
     try {
@@ -91,18 +92,15 @@ export default function Onboarding() {
       setIsGenerating(true);
       await generatePlan();
       navigate("/profile");
-
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to save profile");
     } finally {
       setIsGenerating(false);
     }
-  };
+  }
 
   if (!user) {
-    return (
-      <RedirectToSignIn />
-    );
+    return <RedirectToSignIn />;
   }
 
   return (
@@ -112,7 +110,10 @@ export default function Onboarding() {
 
         <div className="relative">
           {!isGenerating ? (
-            <Card variant="glass" className="border border-[var(--border-white-10)]">
+            <Card
+              variant="glass"
+              className="border border-[var(--border-white-10)]"
+            >
               {/* Header */}
               <div className="mb-8">
                 <span className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-2 text-sm text-[var(--color-text-secondary)] mb-5">
@@ -154,9 +155,7 @@ export default function Onboarding() {
                     label="Days Per Week"
                     options={daysOptions}
                     value={formData.daysPerWeek}
-                    onChange={(e) =>
-                      updateForm("daysPerWeek", e.target.value)
-                    }
+                    onChange={(e) => updateForm("daysPerWeek", e.target.value)}
                   />
 
                   <Select
@@ -183,9 +182,7 @@ export default function Onboarding() {
                   label="Preferred Training Split"
                   options={splitOptions}
                   value={formData.preferredSplit}
-                  onChange={(e) =>
-                    updateForm("preferredSplit", e.target.value)
-                  }
+                  onChange={(e) => updateForm("preferredSplit", e.target.value)}
                 />
 
                 <Textarea
@@ -238,4 +235,4 @@ export default function Onboarding() {
       </div>
     </div>
   );
-};
+}

@@ -35,9 +35,7 @@ export default function PlanHistory() {
         setPlans(history);
       } catch (err) {
         setError(
-          err instanceof Error
-            ? err.message
-            : "Failed to load plan history"
+          err instanceof Error ? err.message : "Failed to load plan history",
         );
       } finally {
         setLoading(false);
@@ -110,9 +108,7 @@ export default function PlanHistory() {
                 <History className="w-8 h-8 text-white" />
               </div>
 
-              <h2 className="text-2xl font-semibold mb-3">
-                No Plans Yet
-              </h2>
+              <h2 className="text-2xl font-semibold mb-3">No Plans Yet</h2>
 
               <p className="text-[var(--color-text-secondary)]">
                 Generate your first AI workout plan to see it here.

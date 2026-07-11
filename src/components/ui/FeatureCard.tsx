@@ -48,7 +48,7 @@ export default function FeatureCard({
           "transition-all duration-500",
           "hover:border-primary/30",
           "hover:shadow-2xl hover:shadow-primary/10",
-          onClick && "cursor-pointer"
+          onClick && "cursor-pointer",
         )}
       >
         {/* Background Glow */}
@@ -56,11 +56,9 @@ export default function FeatureCard({
         <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-primary/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
         <div className="relative flex h-full flex-col">
-
           {/* Top */}
 
           <div className="flex items-start justify-between">
-
             <div
               className={cn(
                 "relative flex h-16 w-16 items-center justify-center rounded-2xl",
@@ -69,7 +67,7 @@ export default function FeatureCard({
                 "transition-all duration-500",
                 "group-hover:scale-110",
                 "group-hover:-translate-y-1",
-                "group-hover:rotate-3"
+                "group-hover:rotate-3",
               )}
             >
               <Icon
@@ -88,7 +86,6 @@ export default function FeatureCard({
           {/* Content */}
 
           <div className="mt-8 flex-1">
-
             <h3 className="text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-primary">
               {title}
             </h3>
@@ -102,7 +99,6 @@ export default function FeatureCard({
 
           {cta && (
             <div className="mt-8">
-
               <button
                 type="button"
                 className="inline-flex items-center gap-2 font-semibold text-primary transition-all duration-300 group-hover:gap-3"
@@ -114,11 +110,10 @@ export default function FeatureCard({
                   className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </button>
-
             </div>
           )}
         </div>
       </Card>
     </SlideUp>
   );
-};
+}

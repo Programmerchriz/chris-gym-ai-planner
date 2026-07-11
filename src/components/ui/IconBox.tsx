@@ -57,10 +57,10 @@ export default function IconBox({
         "shadow-lg shadow-orange-500/20",
         sizes[size],
         radius[rounded],
-        className
+        className,
       )}
     >
       {children}
     </motion.div>
   );
-};
+}

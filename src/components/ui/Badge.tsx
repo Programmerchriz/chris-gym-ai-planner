@@ -16,17 +16,9 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: [
-          "bg-muted",
-          "text-muted-foreground",
-          "border-border",
-        ],
+        default: ["bg-muted", "text-muted-foreground", "border-border"],
 
-        primary: [
-          "bg-primary/10",
-          "text-primary",
-          "border-primary/20",
-        ],
+        primary: ["bg-primary/10", "text-primary", "border-primary/20"],
 
         success: [
           "bg-emerald-500/10",
@@ -40,17 +32,9 @@ const badgeVariants = cva(
           "border-orange-500/20",
         ],
 
-        danger: [
-          "bg-red-500/10",
-          "text-red-500",
-          "border-red-500/20",
-        ],
+        danger: ["bg-red-500/10", "text-red-500", "border-red-500/20"],
 
-        outline: [
-          "bg-transparent",
-          "border-border",
-          "text-foreground",
-        ],
+        outline: ["bg-transparent", "border-border", "text-foreground"],
       },
 
       size: {
@@ -66,12 +50,11 @@ const badgeVariants = cva(
       variant: "default",
       size: "md",
     },
-  }
+  },
 );
 
 export interface BadgeProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {}
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant, size, children, ...props }, ref) => {
@@ -83,14 +66,14 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
             variant,
             size,
           }),
-          className
+          className,
         )}
         {...props}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 
 Badge.displayName = "Badge";

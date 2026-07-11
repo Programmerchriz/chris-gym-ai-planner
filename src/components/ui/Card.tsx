@@ -13,16 +13,9 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: [
-          "bg-card",
-          "border-border",
-        ],
+        default: ["bg-card", "border-border"],
 
-        bordered: [
-          "bg-card",
-          "border-border",
-          "hover:border-primary/40",
-        ],
+        bordered: ["bg-card", "border-border", "hover:border-primary/40"],
 
         glass: [
           "bg-background/60",
@@ -31,12 +24,7 @@ const cardVariants = cva(
           "supports-[backdrop-filter]:bg-background/40",
         ],
 
-        elevated: [
-          "bg-card",
-          "border-border",
-          "shadow-xl",
-          "shadow-black/5",
-        ],
+        elevated: ["bg-card", "border-border", "shadow-xl", "shadow-black/5"],
 
         gradient: [
           "border-primary/20",
@@ -65,14 +53,12 @@ const cardVariants = cva(
       padding: "md",
       hover: false,
     },
-  }
+  },
 );
 
 interface CardProps
-  extends Omit<
-      HTMLMotionProps<"div">,
-      "children" | "className"
-    >,
+  extends
+    Omit<HTMLMotionProps<"div">, "children" | "className">,
     VariantProps<typeof cardVariants> {
   children?: ReactNode;
 
@@ -83,16 +69,8 @@ interface CardProps
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   (
-    {
-      children,
-      className,
-      variant,
-      padding,
-      hover,
-      animate = false,
-      ...props
-    },
-    ref
+    { children, className, variant, padding, hover, animate = false, ...props },
+    ref,
   ) => {
     return (
       <motion.div
@@ -115,14 +93,14 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             padding,
             hover,
           }),
-          className
+          className,
         )}
         {...props}
       >
         {children}
       </motion.div>
     );
-  }
+  },
 );
 
 Card.displayName = "Card";

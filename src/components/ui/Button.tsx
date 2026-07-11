@@ -10,12 +10,9 @@ const buttonVariants = cva(
       variant: {
         primary:
           "bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 text-white shadow-lg shadow-orange-500/30 hover:brightness-110",
-        secondary:
-          "bg-card border border-border hover:bg-muted",
-        ghost:
-          "hover:bg-muted text-muted-foreground hover:text-foreground",
-        outline:
-          "border border-orange-400/30 hover:bg-orange-500/10",
+        secondary: "bg-card border border-border hover:bg-muted",
+        ghost: "hover:bg-muted text-muted-foreground hover:text-foreground",
+        outline: "border border-orange-400/30 hover:bg-orange-500/10",
         gradient:
           "bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 text-white border border-orange-300/20 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:brightness-110 active:scale-[0.98]",
 
@@ -34,11 +31,12 @@ const buttonVariants = cva(
       variant: "primary",
       size: "md",
     },
-  }
+  },
 );
 
 interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   loading?: boolean;
 }
@@ -48,14 +46,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={cn(buttonVariants({ variant, size }), className, "hover:cursor-pointer")}
+        className={cn(
+          buttonVariants({ variant, size }),
+          className,
+          "hover:cursor-pointer",
+        )}
         disabled={loading || props.disabled}
         {...props}
       >
         {loading ? "Loading..." : children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

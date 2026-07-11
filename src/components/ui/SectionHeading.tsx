@@ -39,21 +39,12 @@ export default function SectionHeading({
       className={cn(
         "mb-16 flex flex-col gap-6",
         centered ? "items-center text-center" : "items-start text-left",
-        className
+        className,
       )}
     >
-      {badge && (
-        <Badge variant="primary">
-          {badge}
-        </Badge>
-      )}
+      {badge && <Badge variant="primary">{badge}</Badge>}
 
-      <div
-        className={cn(
-          "space-y-5",
-          widths[maxWidth]
-        )}
-      >
+      <div className={cn("space-y-5", widths[maxWidth])}>
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
           {title}
         </h2>
@@ -68,4 +59,4 @@ export default function SectionHeading({
       {action}
     </SlideUp>
   );
-};
+}

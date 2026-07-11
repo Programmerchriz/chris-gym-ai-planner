@@ -1,5 +1,5 @@
-import { AuthView } from '@neondatabase/neon-js/auth/react';
-import { useParams } from 'react-router-dom';
+import { AuthView } from "@neondatabase/neon-js/auth/react";
+import { useParams } from "react-router-dom";
 
 export default function Auth() {
   const { pathname } = useParams();
@@ -16,4 +16,4 @@ export default function Auth() {
       </div>
     </div>
   );
-};
+}
