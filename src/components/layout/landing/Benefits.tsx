@@ -4,8 +4,8 @@ import {
   CheckCircle2,
   Clock3,
   Dumbbell,
-  Sparkles,
   Target,
+  X,
 } from "lucide-react";
 
 import Container from "@/components/layout/landing/Container";
@@ -110,8 +110,8 @@ export default function Benefits() {
 
                 <p className="mt-6 leading-8 text-muted-foreground">
                   GymAI combines artificial intelligence, nutrition planning,
-                  progress tracking and adaptive recommendations into one
-                  seamless experience—helping you stay consistent while removing
+                  progress tracking, and adaptive recommendations into one
+                  seamless experience; helping you stay consistent while removing
                   the complexity of fitness planning.
                 </p>
 
@@ -199,7 +199,7 @@ export default function Benefits() {
                 >
                   <div className="flex items-center gap-3 text-muted-foreground">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
-                      ×
+                      <X className="h-4 w-4" />
                     </span>
 
                     {row.old}
@@ -207,7 +207,6 @@ export default function Benefits() {
 
                   <div className="flex items-center gap-3 font-medium">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15">
-                      {/* <Sparkles className="h-4 w-4 text-primary" /> */}
                       <Check className="h-4 w-4 text-primary" />
                     </span>
 

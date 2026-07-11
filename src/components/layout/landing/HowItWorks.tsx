@@ -68,20 +68,14 @@ export default function HowItWorks() {
         <div className="relative mx-auto mt-20 max-w-6xl">
           {/* Desktop Timeline */}
 
-          <div className="absolute left-1/2 top-10 hidden h-[calc(100%-5rem)] w-px -translate-x-1/2 bg-gradient-to-b from-primary/10 via-primary/50 to-primary/10 lg:block" />
-
-          <Stagger className="space-y-10 lg:space-y-16">
+          <Stagger className="grid gap-8 md:grid-cols-2 items-center justify-center">
             {steps.map((step, index) => {
               const Icon = step.icon;
 
-              const left = index % 2 === 0;
-
               return (
-                <SlideUp key={step.title}>
-                  <div
-                    className={`relative grid items-center gap-8 lg:grid-cols-2 ${
-                      !left ? "lg:[&>*:first-child]:order-2" : ""
-                    }`}
+                <SlideUp
+                    key={step.title}
+                    className="h-full w-full"
                   >
                     {/* Card */}
 
@@ -89,7 +83,7 @@ export default function HowItWorks() {
                       variant="glass"
                       animate
                       hover
-                      className="group relative overflow-hidden border-white/10 p-8"
+                      className="group relative h-full overflow-hidden border-white/10 p-8"
                     >
                       {/* Glow */}
 
@@ -113,29 +107,6 @@ export default function HowItWorks() {
                         </p>
                       </div>
                     </Card>
-
-                    {/* Timeline Node */}
-
-                    <div className="relative hidden h-full items-center justify-center lg:flex">
-                      <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-primary/30 bg-background shadow-xl">
-                        <Sparkles className="h-6 w-6 text-primary" />
-                      </div>
-
-                      <div
-                        className={`absolute top-1/2 h-px w-24 bg-gradient-to-r ${
-                          left
-                            ? "left-0 from-transparent to-primary/40"
-                            : "right-0 from-primary/40 to-transparent"
-                        }`}
-                      />
-
-                      <ArrowRight
-                        className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 text-primary/70 ${
-                          left ? "left-20" : "right-20 rotate-180"
-                        }`}
-                      />
-                    </div>
-                  </div>
                 </SlideUp>
               );
             })}

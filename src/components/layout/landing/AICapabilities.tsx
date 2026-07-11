@@ -93,7 +93,7 @@ export default function AICapabilities() {
         <SectionHeading
           badge="AI Capabilities"
           title="An AI Coach That Evolves With Every Workout"
-          description="GymAI doesn't simply generate plans—it analyzes your progress, adapts recommendations and continuously improves your training experience."
+          description="GymAI doesn't simply generate plans; it analyzes your progress, adapts recommendations, and continuously improves your training experience."
         />
 
         <div className="grid gap-10 xl:grid-cols-[420px_1fr]">

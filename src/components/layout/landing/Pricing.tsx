@@ -160,7 +160,7 @@ export default function Pricing() {
                     size="lg"
                     className="mt-12 w-full"
                     variant={
-                      plan.popular
+                      (plan.popular || plan.name === "Enterprise")
                         ? "gradient"
                         : "secondary"
                     }

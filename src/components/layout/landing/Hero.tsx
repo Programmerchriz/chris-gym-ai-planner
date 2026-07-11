@@ -39,7 +39,7 @@ export default function Hero() {
             <SlideUp delay={0.2}>
               <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
                 Personalized workout plans, AI nutrition, adaptive
-                recommendations and powerful analytics— everything you need to
+                recommendations, and powerful analytics; everything you need to
                 build consistency and reach your fitness goals faster.
               </p>
             </SlideUp>

@@ -34,13 +34,13 @@ const features = [
     icon: Target,
     title: "Goal-Oriented",
     description:
-      "Whether you want to build muscle, lose fat, or get stronger — we optimize for your goal.",
+      "Whether you want to build muscle, lose fat, or get stronger; we optimize for your goal.",
   },
   {
     icon: Calendar,
     title: "Flexible Scheduling",
     description:
-      "Plans that fit your lifestyle. Train 2 days or 6 — we adapt to you.",
+      "Plans that fit your lifestyle. Train 2 days or 6;we adapt to you.",
   },
   {
     icon: Clock,
@@ -309,7 +309,7 @@ export default function Home() {
       <Benefits />
       {/* <Testimonials /> */}
       <Pricing />
-      <FAQ />
+      {/* <FAQ /> */}
       <FinalCTA />
       <Footer />
     </>

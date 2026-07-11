@@ -232,9 +232,9 @@ function WorkoutDashboard() {
           >
             <div className="flex items-start gap-4">
 
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <div className="flex h-12 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
 
-                <Brain size={20} />
+                <Brain size={24} />
 
               </div>
 
@@ -439,9 +439,9 @@ function NutritionDashboard() {
           >
             <div className="flex items-start gap-4">
 
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <div className="flex h-12 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
 
-                <Brain size={20} />
+                <Brain size={24} />
 
               </div>
 
@@ -666,12 +666,11 @@ function AnalyticsDashboard() {
 
             <div className="flex items-start gap-4">
 
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <div className="flex h-12 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
 
-                <Brain size={20} />
+                <Brain size={24} />
 
               </div>
-
 
               <div>
 
