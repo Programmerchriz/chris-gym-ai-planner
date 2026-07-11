@@ -20,14 +20,10 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={cn(
-        "relative overflow-hidden",
-        spacing[space],
-        className
-      )}
+      className={cn("relative overflow-hidden", spacing[space], className)}
       {...props}
     >
       {children}
     </section>
   );
-};
+}

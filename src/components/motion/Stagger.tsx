@@ -25,4 +25,4 @@ export default function Stagger({
       {children}
     </motion.div>
   );
-};
+}

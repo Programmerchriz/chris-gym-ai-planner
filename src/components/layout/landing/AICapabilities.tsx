@@ -109,9 +109,7 @@ export default function AICapabilities() {
               <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-primary/15 blur-3xl transition duration-500 group-hover:scale-110" />
 
               <div className="relative flex h-full flex-col">
-                <Badge variant="primary">
-                  AI Engine
-                </Badge>
+                <Badge variant="primary">AI Engine</Badge>
 
                 <div className="mt-8 flex h-24 w-24 items-center justify-center rounded-3xl gradient-primary-diagonal shadow-xl shadow-primary/20 transition duration-500 group-hover:rotate-6 group-hover:scale-110">
                   <Brain className="h-12 w-12 text-white" />
@@ -122,10 +120,9 @@ export default function AICapabilities() {
                 </h3>
 
                 <p className="mt-6 leading-8 text-muted-foreground">
-                  Traditional workout plans never change.
-                  GymAI learns from your goals, training history and progress to
-                  create recommendations that become increasingly personalized
-                  over time.
+                  Traditional workout plans never change. GymAI learns from your
+                  goals, training history and progress to create recommendations
+                  that become increasingly personalized over time.
                 </p>
 
                 <div className="mt-10 space-y-4">
@@ -143,17 +140,12 @@ export default function AICapabilities() {
                         <Zap className="h-4 w-4 text-primary" />
                       </div>
 
-                      <span className="text-sm font-medium">
-                        {item}
-                      </span>
+                      <span className="text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
 
-                <Button
-                  className="mt-10 w-full"
-                  size="lg"
-                >
+                <Button className="mt-10 w-full" size="lg">
                   Experience GymAI
                 </Button>
               </div>
@@ -211,9 +203,7 @@ export default function AICapabilities() {
                   {stat.value}
                 </p>
 
-                <p className="mt-3 text-muted-foreground">
-                  {stat.label}
-                </p>
+                <p className="mt-3 text-muted-foreground">{stat.label}</p>
               </Card>
             ))}
           </div>
@@ -221,4 +211,4 @@ export default function AICapabilities() {
       </Container>
     </Section>
   );
-};
+}

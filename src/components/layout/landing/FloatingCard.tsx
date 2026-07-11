@@ -20,13 +20,10 @@ export default function FloatingCard({
         padding="md"
         animate
         hover
-        className={cn(
-          "border-white/10 shadow-2xl",
-          className
-        )}
+        className={cn("border-white/10 shadow-2xl", className)}
       >
         {children}
       </Card>
     </Floating>
   );
-};
+}

@@ -1,39 +1,15 @@
-import {
-  Github,
-  Instagram,
-  Twitter,
-  Dumbbell,
-} from "lucide-react";
+import { Github, Instagram, Twitter, Dumbbell } from "lucide-react";
 
 import Container from "@/components/layout/landing/Container";
 
 const footerLinks = {
-  Product: [
-    "Features",
-    "AI Capabilities",
-    "Pricing",
-    "FAQ",
-  ],
+  Product: ["Features", "AI Capabilities", "Pricing", "FAQ"],
 
-  Company: [
-    "About",
-    "Blog",
-    "Careers",
-    "Contact",
-  ],
+  Company: ["About", "Blog", "Careers", "Contact"],
 
-  Resources: [
-    "Documentation",
-    "Help Center",
-    "Community",
-    "API",
-  ],
+  Resources: ["Documentation", "Help Center", "Community", "API"],
 
-  Legal: [
-    "Privacy Policy",
-    "Terms of Service",
-    "Cookie Policy",
-  ],
+  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
 };
 
 const socials = [
@@ -68,9 +44,7 @@ export default function Footer() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold tracking-tight">
-                    GymAI
-                  </h3>
+                  <h3 className="text-lg font-bold tracking-tight">GymAI</h3>
 
                   <p className="text-xs text-muted-foreground">
                     AI Training Planner
@@ -115,33 +89,29 @@ export default function Footer() {
 
             {/* Links */}
 
-            {Object.entries(footerLinks).map(
-              ([title, links]) => (
-                <div key={title}>
-                  <h4 className="text-sm font-semibold">
-                    {title}
-                  </h4>
+            {Object.entries(footerLinks).map(([title, links]) => (
+              <div key={title}>
+                <h4 className="text-sm font-semibold">{title}</h4>
 
-                  <ul className="mt-5 space-y-3">
-                    {links.map((link) => (
-                      <li key={link}>
-                        <a
-                          href="#"
-                          className="
+                <ul className="mt-5 space-y-3">
+                  {links.map((link) => (
+                    <li key={link}>
+                      <a
+                        href="#"
+                        className="
                             text-sm
                             text-muted-foreground
                             transition-colors
                             hover:text-primary
                           "
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            )}
+                      >
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Bottom */}
@@ -162,17 +132,12 @@ export default function Footer() {
               md:justify-between
             "
           >
-            <p>
-              © {new Date().getFullYear()} GymAI.
-              All rights reserved.
-            </p>
+            <p>© {new Date().getFullYear()} GymAI. All rights reserved.</p>
 
-            <p>
-              {/* Built with React, Express, PostgreSQL & AI. */}
-            </p>
+            <p>{/* Built with React, Express, PostgreSQL & AI. */}</p>
           </div>
         </div>
       </Container>
     </footer>
   );
-};
+}

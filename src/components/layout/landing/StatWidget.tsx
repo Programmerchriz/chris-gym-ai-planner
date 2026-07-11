@@ -24,34 +24,20 @@ export default function StatWidget({
   className,
 }: StatWidgetProps) {
   return (
-    <Card
-      variant="glass"
-      className={cn("space-y-5", className)}
-    >
+    <Card variant="glass" className={cn("space-y-5", className)}>
       <IconBox size="sm">
         <Icon size={18} />
       </IconBox>
 
       <div>
-
-        <p className="text-sm text-muted-foreground">
-
-          {title}
-
-        </p>
+        <p className="text-sm text-muted-foreground">{title}</p>
 
         <div className="mt-2 text-3xl font-bold">
-
-          <CountUp
-            end={value}
-            duration={2}
-          />
+          <CountUp end={value} duration={2} />
 
           {suffix}
-
         </div>
-
       </div>
     </Card>
   );
-};
+}

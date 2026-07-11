@@ -4,16 +4,10 @@ import { floatingAnimation } from "@/lib/animations";
 
 interface FloatingProps extends HTMLMotionProps<"div"> {}
 
-export default function Floating({
-  children,
-  ...props
-}: FloatingProps) {
+export default function Floating({ children, ...props }: FloatingProps) {
   return (
-    <motion.div
-      animate={floatingAnimation}
-      {...props}
-    >
+    <motion.div animate={floatingAnimation} {...props}>
       {children}
     </motion.div>
   );
-};
+}

@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Minus,
-  Plus,
-  MessageCircleQuestion,
-} from "lucide-react";
+import { Minus, Plus, MessageCircleQuestion } from "lucide-react";
 
 import Section from "@/components/layout/landing/Section";
 import Container from "@/components/layout/landing/Container";
@@ -53,10 +49,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number>(0);
 
   return (
-    <Section
-      id="faq"
-      className="relative overflow-hidden"
-    >
+    <Section id="faq" className="relative overflow-hidden">
       {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -75,18 +68,13 @@ export default function FAQ() {
             const active = open === index;
 
             return (
-              <SlideUp
-                key={faq.question}
-                delay={index * 0.05}
-              >
+              <SlideUp key={faq.question} delay={index * 0.05}>
                 <Card
                   variant="glass"
                   className="overflow-hidden border-white/10"
                 >
                   <button
-                    onClick={() =>
-                      setOpen(active ? -1 : index)
-                    }
+                    onClick={() => setOpen(active ? -1 : index)}
                     className="flex w-full items-center justify-between gap-6 p-7 text-left transition-colors hover:bg-white/[0.02]"
                   >
                     <div className="flex items-center gap-4">
@@ -94,9 +82,7 @@ export default function FAQ() {
                         <MessageCircleQuestion className="h-5 w-5 text-white" />
                       </div>
 
-                      <h3 className="text-lg font-semibold">
-                        {faq.question}
-                      </h3>
+                      <h3 className="text-lg font-semibold">{faq.question}</h3>
                     </div>
 
                     <motion.div
@@ -156,10 +142,7 @@ export default function FAQ() {
             variant="gradient"
             className="mx-auto mt-16 max-w-4xl border-primary/20 text-center"
           >
-            <Badge
-              variant="primary"
-              className="mx-auto"
-            >
+            <Badge variant="primary" className="mx-auto">
               Still have questions?
             </Badge>
 
@@ -168,14 +151,11 @@ export default function FAQ() {
             </h3>
 
             <p className="mx-auto mt-5 max-w-2xl leading-8 text-muted-foreground">
-              Can't find the answer you're looking for?
-              Reach out and we'll be happy to help you get started with GymAI.
+              Can't find the answer you're looking for? Reach out and we'll be
+              happy to help you get started with GymAI.
             </p>
 
-            <Button
-              size="lg"
-              className="mx-auto mt-10"
-            >
+            <Button size="lg" className="mx-auto mt-10">
               Contact Support
             </Button>
           </Card>
@@ -183,4 +163,4 @@ export default function FAQ() {
       </Container>
     </Section>
   );
-};
+}

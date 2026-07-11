@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import type { HTMLMotionProps, Variants } from "framer-motion";
-import { fadeIn, scaleIn, slideDown, slideUp, viewport } from "@/lib/animations";
+import {
+  fadeIn,
+  scaleIn,
+  slideDown,
+  slideUp,
+  viewport,
+} from "@/lib/animations";
 
-type RevealVariant =
-  | "fade"
-  | "slideUp"
-  | "slideDown"
-  | "scale";
+type RevealVariant = "fade" | "slideUp" | "slideDown" | "scale";
 
 interface RevealProps extends HTMLMotionProps<"div"> {
   variant?: RevealVariant;
@@ -51,4 +53,4 @@ export default function Reveal({
       {children}
     </motion.div>
   );
-};
+}

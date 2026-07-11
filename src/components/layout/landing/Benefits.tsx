@@ -66,10 +66,7 @@ const comparison = [
 
 export default function Benefits() {
   return (
-    <Section
-      id="benefits"
-      className="relative overflow-hidden"
-    >
+    <Section id="benefits" className="relative overflow-hidden">
       {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -98,9 +95,7 @@ export default function Benefits() {
               <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary/10 blur-3xl transition duration-500 group-hover:scale-110" />
 
               <div className="relative">
-                <Badge variant="primary">
-                  Why GymAI?
-                </Badge>
+                <Badge variant="primary">Why GymAI?</Badge>
 
                 <h3 className="mt-6 text-3xl font-bold tracking-tight">
                   Focus On Training.
@@ -111,8 +106,8 @@ export default function Benefits() {
                 <p className="mt-6 leading-8 text-muted-foreground">
                   GymAI combines artificial intelligence, nutrition planning,
                   progress tracking, and adaptive recommendations into one
-                  seamless experience; helping you stay consistent while removing
-                  the complexity of fitness planning.
+                  seamless experience; helping you stay consistent while
+                  removing the complexity of fitness planning.
                 </p>
 
                 <div className="mt-10 space-y-4">
@@ -129,9 +124,7 @@ export default function Benefits() {
                     >
                       <CheckCircle2 className="h-5 w-5 text-primary" />
 
-                      <span className="font-medium">
-                        {item}
-                      </span>
+                      <span className="font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -220,4 +213,4 @@ export default function Benefits() {
       </Container>
     </Section>
   );
-};
+}

@@ -1,10 +1,4 @@
-import {
-  ArrowRight,
-  Brain,
-  ShieldCheck,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Brain, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 import Section from "@/components/layout/landing/Section";
 import Container from "@/components/layout/landing/Container";
@@ -18,10 +12,7 @@ import SlideUp from "@/components/motion/SlideUp";
 
 export default function FinalCTA() {
   return (
-    <Section
-      id="cta"
-      className="relative overflow-hidden pb-32"
-    >
+    <Section id="cta" className="relative overflow-hidden pb-32">
       {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -57,9 +48,7 @@ export default function FinalCTA() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold">
-                    AI Ready
-                  </p>
+                  <p className="text-sm font-semibold">AI Ready</p>
 
                   <p className="text-xs text-muted-foreground">
                     Personalized Plans
@@ -81,9 +70,7 @@ export default function FinalCTA() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold">
-                    Secure
-                  </p>
+                  <p className="text-sm font-semibold">Secure</p>
 
                   <p className="text-xs text-muted-foreground">
                     Your Data Protected
@@ -97,10 +84,7 @@ export default function FinalCTA() {
 
           <div className="relative mx-auto max-w-4xl text-center">
             <SlideUp>
-              <Badge
-                variant="primary"
-                className="mx-auto"
-              >
+              <Badge variant="primary" className="mx-auto">
                 <Sparkles className="mr-2 h-4 w-4" />
                 Start Your Fitness Journey Today
               </Badge>
@@ -110,7 +94,6 @@ export default function FinalCTA() {
               <h2 className="mt-8 text-5xl font-black leading-tight tracking-tight md:text-6xl">
                 Let AI Build Your
                 <br />
-
                 <span className="gradient-primary bg-clip-text text-transparent">
                   Perfect Workout Plan.
                 </span>
@@ -119,10 +102,9 @@ export default function FinalCTA() {
 
             <SlideUp delay={0.2}>
               <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-muted-foreground">
-                Stop guessing.
-                Stop wasting time.
-                Generate personalized workouts, smarter nutrition plans and
-                adaptive recommendations in seconds with GymAI.
+                Stop guessing. Stop wasting time. Generate personalized
+                workouts, smarter nutrition plans and adaptive recommendations
+                in seconds with GymAI.
               </p>
             </SlideUp>
 
@@ -130,19 +112,12 @@ export default function FinalCTA() {
 
             <SlideUp delay={0.3}>
               <div className="mt-12 flex flex-wrap justify-center gap-4">
-                <Button
-                  size="lg"
-                  variant="gradient"
-                >
+                <Button size="lg" variant="gradient">
                   Generate My Plan
-
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
 
-                <Button
-                  size="lg"
-                  variant="secondary"
-                >
+                <Button size="lg" variant="secondary">
                   View Demo
                 </Button>
               </div>
@@ -175,9 +150,7 @@ export default function FinalCTA() {
                     >
                       <Icon className="h-5 w-5 text-primary" />
 
-                      <span className="text-sm font-medium">
-                        {item.text}
-                      </span>
+                      <span className="text-sm font-medium">{item.text}</span>
                     </div>
                   );
                 })}
@@ -188,4 +161,4 @@ export default function FinalCTA() {
       </Container>
     </Section>
   );
-};
+}

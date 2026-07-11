@@ -1,10 +1,4 @@
-import {
-  Quote,
-  Star,
-  TrendingUp,
-  Trophy,
-  Users,
-} from "lucide-react";
+import { Quote, Star, TrendingUp, Trophy, Users } from "lucide-react";
 
 import Container from "@/components/layout/landing/Container";
 import Section from "@/components/layout/landing/Section";
@@ -63,10 +57,7 @@ const stats = [
 
 export default function Testimonials() {
   return (
-    <Section
-      id="testimonials"
-      className="relative overflow-hidden"
-    >
+    <Section id="testimonials" className="relative overflow-hidden">
       {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -85,14 +76,9 @@ export default function Testimonials() {
         {/* Rating */}
 
         <SlideUp>
-          <Card
-            variant="gradient"
-            className="border-primary/20"
-          >
+          <Card variant="gradient" className="border-primary/20">
             <div className="flex flex-col items-center gap-6 text-center">
-              <Badge variant="primary">
-                Trusted By Fitness Enthusiasts
-              </Badge>
+              <Badge variant="primary">Trusted By Fitness Enthusiasts</Badge>
 
               <div className="flex gap-2">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -139,9 +125,7 @@ export default function Testimonials() {
                     {stat.value}
                   </p>
 
-                  <p className="mt-2 text-muted-foreground">
-                    {stat.label}
-                  </p>
+                  <p className="mt-2 text-muted-foreground">{stat.label}</p>
                 </Card>
               );
             })}
@@ -175,9 +159,7 @@ export default function Testimonials() {
                     </div>
 
                     <div>
-                      <h4 className="font-semibold">
-                        {item.name}
-                      </h4>
+                      <h4 className="font-semibold">{item.name}</h4>
 
                       <p className="text-sm text-muted-foreground">
                         {item.role}
@@ -185,9 +167,7 @@ export default function Testimonials() {
                     </div>
                   </div>
 
-                  <Badge variant="primary">
-                    {item.result}
-                  </Badge>
+                  <Badge variant="primary">{item.result}</Badge>
                 </div>
               </div>
             </Card>
@@ -196,4 +176,4 @@ export default function Testimonials() {
       </Container>
     </Section>
   );
-};
+}

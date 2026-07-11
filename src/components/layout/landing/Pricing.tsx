@@ -1,8 +1,4 @@
-import {
-  Check,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { Check, Sparkles, Zap } from "lucide-react";
 
 import Container from "@/components/layout/landing/Container";
 import Section from "@/components/layout/landing/Section";
@@ -73,10 +69,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <Section
-      id="pricing"
-      className="relative overflow-hidden"
-    >
+    <Section id="pricing" className="relative overflow-hidden">
       {/* Background */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -92,10 +85,7 @@ export default function Pricing() {
 
         <div className="mx-auto mt-16 grid max-w-7xl gap-8 lg:grid-cols-3">
           {plans.map((plan) => (
-            <SlideUp
-              key={plan.name}
-              className="h-full"
-            >
+            <SlideUp key={plan.name} className="h-full">
               <Card
                 variant={plan.variant}
                 animate
@@ -108,10 +98,7 @@ export default function Pricing() {
               >
                 {plan.popular && (
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-                    <Badge
-                      variant="primary"
-                      className="px-5 py-2 shadow-lg"
-                    >
+                    <Badge variant="primary" className="px-5 py-2 shadow-lg">
                       <Sparkles className="mr-2 h-4 w-4" />
                       Most Popular
                     </Badge>
@@ -120,9 +107,7 @@ export default function Pricing() {
 
                 <div className="flex h-full flex-col">
                   <div>
-                    <h3 className="text-3xl font-bold">
-                      {plan.name}
-                    </h3>
+                    <h3 className="text-3xl font-bold">{plan.name}</h3>
 
                     <p className="mt-4 leading-7 text-muted-foreground">
                       {plan.description}
@@ -143,10 +128,7 @@ export default function Pricing() {
 
                   <div className="flex-1 space-y-5">
                     {plan.features.map((feature) => (
-                      <div
-                        key={feature}
-                        className="flex items-center gap-4"
-                      >
+                      <div key={feature} className="flex items-center gap-4">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
                           <Check className="h-4 w-4 text-primary" />
                         </div>
@@ -160,14 +142,12 @@ export default function Pricing() {
                     size="lg"
                     className="mt-12 w-full"
                     variant={
-                      (plan.popular || plan.name === "Enterprise")
+                      plan.popular || plan.name === "Enterprise"
                         ? "gradient"
                         : "secondary"
                     }
                   >
-                    {plan.popular && (
-                      <Zap className="mr-2 h-4 w-4" />
-                    )}
+                    {plan.popular && <Zap className="mr-2 h-4 w-4" />}
 
                     {plan.button}
                   </Button>
@@ -185,9 +165,7 @@ export default function Pricing() {
             className="mx-auto mt-16 max-w-5xl border-white/10"
           >
             <div className="flex flex-col items-center gap-6 text-center">
-              <Badge variant="primary">
-                No Hidden Fees
-              </Badge>
+              <Badge variant="primary">No Hidden Fees</Badge>
 
               <h3 className="text-3xl font-bold tracking-tight">
                 Start Free. Upgrade Only When You Need More.
@@ -204,4 +182,4 @@ export default function Pricing() {
       </Container>
     </Section>
   );
-};
+}

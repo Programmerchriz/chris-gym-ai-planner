@@ -73,40 +73,37 @@ export default function HowItWorks() {
               const Icon = step.icon;
 
               return (
-                <SlideUp
-                    key={step.title}
-                    className="h-full w-full"
+                <SlideUp key={step.title} className="h-full w-full">
+                  {/* Card */}
+
+                  <Card
+                    variant="glass"
+                    animate
+                    hover
+                    className="group relative h-full overflow-hidden border-white/10 p-8"
                   >
-                    {/* Card */}
+                    {/* Glow */}
 
-                    <Card
-                      variant="glass"
-                      animate
-                      hover
-                      className="group relative h-full overflow-hidden border-white/10 p-8"
-                    >
-                      {/* Glow */}
+                    <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-                      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="relative">
+                      <Badge variant="primary" size="sm">
+                        {step.badge}
+                      </Badge>
 
-                      <div className="relative">
-                        <Badge variant="primary" size="sm">
-                          {step.badge}
-                        </Badge>
-
-                        <div className="mt-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary-diagonal shadow-lg shadow-primary/20 transition duration-500 group-hover:scale-110 group-hover:rotate-6">
-                          <Icon className="h-8 w-8 text-white" />
-                        </div>
-
-                        <h3 className="mt-8 text-2xl font-bold tracking-tight transition-colors duration-300 group-hover:text-primary">
-                          {step.title}
-                        </h3>
-
-                        <p className="mt-5 leading-8 text-muted-foreground">
-                          {step.description}
-                        </p>
+                      <div className="mt-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary-diagonal shadow-lg shadow-primary/20 transition duration-500 group-hover:scale-110 group-hover:rotate-6">
+                        <Icon className="h-8 w-8 text-white" />
                       </div>
-                    </Card>
+
+                      <h3 className="mt-8 text-2xl font-bold tracking-tight transition-colors duration-300 group-hover:text-primary">
+                        {step.title}
+                      </h3>
+
+                      <p className="mt-5 leading-8 text-muted-foreground">
+                        {step.description}
+                      </p>
+                    </div>
+                  </Card>
                 </SlideUp>
               );
             })}
@@ -123,9 +120,7 @@ export default function HowItWorks() {
           >
             <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
-                <Badge variant="primary">
-                  Intelligent Personalization
-                </Badge>
+                <Badge variant="primary">Intelligent Personalization</Badge>
 
                 <h3 className="mt-6 text-3xl font-bold tracking-tight">
                   Every Workout Gets Smarter
@@ -178,4 +173,4 @@ export default function HowItWorks() {
       </Container>
     </Section>
   );
-};
+}
