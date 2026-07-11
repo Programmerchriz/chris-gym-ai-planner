@@ -29,7 +29,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-white/10">
+    <footer className="relative border-t border-white/10" id="footer">
       <Container>
         <div className="py-16">
           {/* Top */}

@@ -175,8 +175,6 @@
 
 /* Neon Theme Bridge */
 
-:root,
-:root.dark,
 .neon-auth-ui {
   /* Base */
   --background: var(--color-dark-bg);
