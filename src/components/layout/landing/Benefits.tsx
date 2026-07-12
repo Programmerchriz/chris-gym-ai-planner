@@ -172,7 +172,7 @@ export default function Benefits() {
         <SlideUp delay={0.35}>
           <Card
             variant="glass"
-            className="mt-20 border-white/10 overflow-hidden"
+            className="mt-20 border-white/10 overflow-hidden sm:px-6 px-0"
           >
             <div className="border-b border-white/10 px-8 py-6">
               <h3 className="text-2xl font-bold tracking-tight">

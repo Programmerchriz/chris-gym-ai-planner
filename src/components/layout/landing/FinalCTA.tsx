@@ -26,7 +26,7 @@ export default function FinalCTA() {
       <Container className="relative z-10">
         <Card
           variant="gradient"
-          className="relative overflow-hidden border-primary/20 px-8 py-16 md:px-14 md:py-20"
+          className="relative overflow-hidden border-primary/20 px-4 sm:px-8 py-16 md:px-14 md:py-20"
         >
           {/* Decorative Orbs */}
 
