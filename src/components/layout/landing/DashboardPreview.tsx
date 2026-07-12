@@ -115,7 +115,7 @@ function WorkoutDashboard() {
     <Card
       variant="glass"
       padding="lg"
-      className="overflow-hidden rounded-[32px]"
+      className="overflow-hidden rounded-[32px] sm:px-8 px-2"
     >
       <div className="grid gap-8 lg:grid-cols-[1.3fr_.7fr]">
         {/* LEFT */}
@@ -252,7 +252,7 @@ function NutritionDashboard() {
     <Card
       variant="glass"
       padding="lg"
-      className="overflow-hidden rounded-[32px]"
+      className="overflow-hidden rounded-[32px] sm:px-8 px-2"
     >
       <div className="grid gap-8 lg:grid-cols-[1.3fr_.7fr]">
         {/* LEFT */}
@@ -353,7 +353,7 @@ function NutritionDashboard() {
 
           <Card variant="gradient" padding="md">
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <div className="flex h-12 w-18 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <Brain size={24} />
               </div>
 
@@ -394,7 +394,7 @@ function AnalyticsDashboard() {
     <Card
       variant="glass"
       padding="lg"
-      className="overflow-hidden rounded-[32px]"
+      className="overflow-hidden rounded-[32px] sm:px-8 px-2"
     >
       <div className="grid gap-8 lg:grid-cols-[1.3fr_.7fr]">
         <div>
@@ -508,7 +508,7 @@ function AnalyticsDashboard() {
 
           <Card variant="gradient" padding="md">
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-16 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+              <div className="flex h-12 w-20 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <Brain size={24} />
               </div>
 
@@ -549,7 +549,7 @@ function MobilePreview() {
     <Card
       variant="glass"
       padding="lg"
-      className="overflow-hidden rounded-[32px]"
+      className="overflow-hidden rounded-[32px] sm:px-8 px-2"
     >
       <div className="flex flex-col items-center justify-center py-10 text-center">
         <div className="relative">
