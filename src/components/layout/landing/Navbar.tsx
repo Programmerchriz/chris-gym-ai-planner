@@ -146,7 +146,7 @@ export default function Navbar() {
             ) : !isLoading ? (
               <>
                 <Link to="/auth/sign-in">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="secondary" size="sm">
                     Sign In
                   </Button>
                 </Link>

@@ -34,7 +34,7 @@ export default function DashboardWindow({
         <div className="ml-4 h-8 flex-1 rounded-full bg-white/5" />
       </div>
 
-      <div className="p-6">{children}</div>
+      <div className="sm:p-6 p-2">{children}</div>
     </Card>
   );
 }

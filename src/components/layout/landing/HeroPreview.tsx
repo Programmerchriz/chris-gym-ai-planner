@@ -13,8 +13,12 @@ export default function HeroPreview() {
     <Floating>
       <DashboardWindow>
         <div className="grid gap-5">
-          <div className="grid grid-cols-3 gap-5">
-            <StatWidget title="Calories" value={2160} icon={Flame} />
+          <div className="grid grid-cols-3 sm:gap-5 gap-1">
+            <StatWidget
+              title="Calories"
+              value={2160}
+              icon={Flame}
+            />
 
             <StatWidget
               title="Workout Streak"
@@ -23,7 +27,12 @@ export default function HeroPreview() {
               icon={Activity}
             />
 
-            <StatWidget title="Goals" value={91} suffix="%" icon={Trophy} />
+            <StatWidget
+              title="Goals"
+              value={91}
+              suffix="%"
+              icon={Trophy}
+            />
           </div>
 
           <WorkoutWidget />

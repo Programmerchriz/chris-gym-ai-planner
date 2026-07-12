@@ -46,14 +46,14 @@ export default function Hero() {
 
             <SlideUp delay={0.3}>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button size="lg">
+                <Button size="lg" className="flex flex-row gap-2">
                   Generate My Plan
                   <ArrowRight size={18} />
                 </Button>
 
-                <Button size="lg" variant="secondary">
+                <Button size="lg" variant="secondary" className="flex flex-row gap-2">
+                  <span>See Demo</span>
                   <Play size={18} />
-                  See Demo
                 </Button>
               </div>
             </SlideUp>

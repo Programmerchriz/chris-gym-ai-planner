@@ -32,7 +32,7 @@ export default function StatWidget({
       <div>
         <p className="text-sm text-muted-foreground">{title}</p>
 
-        <div className="mt-2 text-3xl font-bold">
+        <div className="mt-3 sm:text-3xl text-2xl font-bold">
           <CountUp end={value} duration={2} />
 
           {suffix}
